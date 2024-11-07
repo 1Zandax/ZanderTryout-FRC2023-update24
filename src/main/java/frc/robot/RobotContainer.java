@@ -130,8 +130,11 @@ public class RobotContainer {
     // Testing for trajectories
     Rotation2d rotationFront = new Rotation2d();          // Facing away from drivers
     SmartDashboard.putData("Drive Trajectory Relative", new DriveTrajectory(CoordType.kRelative, StopType.kBrake, 
-        trajectoryCache.cache[TrajectoryType.roboRace.value], driveTrain, log));
-    
+        trajectoryCache.cache[TrajectoryType.test.value], driveTrain, log));
+    SmartDashboard.putData("Drive Trajectory Curve Relative", new DriveTrajectory(CoordType.kRelative, StopType.kBrake, 
+        trajectoryCache.cache[TrajectoryType.testCurve.value], driveTrain, log));
+    SmartDashboard.putData("Drive Trajectory Absolute", new DriveTrajectory(CoordType.kAbsolute, StopType.kBrake, 
+        trajectoryCache.cache[TrajectoryType.test.value], driveTrain, log));  
     SmartDashboard.putData("Drive Trajectory S-Fwd Relative", new DriveTrajectory(
           CoordType.kRelative, StopType.kBrake,
           new TrajectoryFacing(rotationFront, rotationFront,

@@ -27,7 +27,9 @@ public class TrajectoryCache {
     public TrajectoryFacing[] cache = new TrajectoryFacing[trajectoryCount];        // array of trajectories
 
     public enum TrajectoryType {
-        roboRace(0);
+        test(0),
+        testCurve(1);
+        // CenterBalanceBlue(2),
         // CenterBalanceRed(3),
         // LeaveCommunity(4),
         // LeftOuterOneConeBalanceBlue(5),
@@ -141,33 +143,25 @@ public class TrajectoryCache {
     public TrajectoryCache(FileLog log){
         this.log = log;
 
-        
-        
-        cache[TrajectoryType.roboRace.value] = new TrajectoryFacing(
-            new Rotation2d(0),
-            new Rotation2d(Math.PI),
-            calcTrajectory("Robo Race", 0.4, 0.4,
-                new Pose2d(45/39.37, 90/39.37, new Rotation2d(0)),
-                List.of(
-                    new Translation2d(150/39.37, 100/39.37),
-                    new Translation2d(165/39.37, 60/39.37),
-                    new Translation2d(150/39.37, 45/39.37),
-                    new Translation2d(135/39.37, 60/39.37),
-                    new Translation2d(150/39.37, 90/39.37),
-                    new Translation2d(225/39.37, 110/39.37),
-                    new Translation2d(275/39.37, 120/39.37),
-                    new Translation2d(225/39.37, 125/39.37),
-                    new Translation2d(210/39.37, 120/39.37),
-                    new Translation2d(300/39.37, 45/39.37),
-                    new Translation2d(300/39.37, 60/39.37),
-                    new Translation2d(300/39.37, 90/39.37),
-                    new Translation2d(30/39.37, 90/39.37)
-
-
-                ),
-                new Pose2d(30/39.37, 90/39.37, new Rotation2d(Math.PI))
+        cache[TrajectoryType.test.value] = new TrajectoryFacing(
+            new Rotation2d(0.0),            // Start facing +X direction
+            new Rotation2d(0.0),            // End facing +X direction
+            calcTrajectory("Test", 0.4, 0.4, 
+                new Pose2d(0, 0, new Rotation2d(0.0)),
+                List.of(),
+                new Pose2d(3.0, 0, new Rotation2d(Math.toRadians(0.0)))
             )
         );
+
+        cache[TrajectoryType.testCurve.value] = new TrajectoryFacing(
+            new Rotation2d(0.0),            // Start facing +X direction
+            new Rotation2d(0.0),            // End facing +X direction
+            calcTrajectory("Test Curve", 0.4, 0.4, 
+                new Pose2d(0, 0, new Rotation2d(0.0)),
+                List.of(),
+                new Pose2d(3, 3, new Rotation2d(Math.toRadians(90.0)))
+            )
+        );     
         
         // cache[TrajectoryType.CenterBalanceBlue.value] = new TrajectoryFacing(
         //     new Rotation2d(Math.PI),            // Start facing driver station
