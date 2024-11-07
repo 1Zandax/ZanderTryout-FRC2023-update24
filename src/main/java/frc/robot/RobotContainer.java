@@ -132,20 +132,20 @@ public class RobotContainer {
     SmartDashboard.putData("Drive Trajectory Relative", new DriveTrajectory(CoordType.kRelative, StopType.kBrake, 
         trajectoryCache.cache[TrajectoryType.roboRace.value], driveTrain, log));
     
-    SmartDashboard.putData("Drive Trajectory S-Fwd Relative", new DriveTrajectory(
-          CoordType.kRelative, StopType.kBrake,
-          new TrajectoryFacing(rotationFront, rotationFront,
-            TrajectoryCache.calcTrajectory( "S-Fwd", 0.4, 0.4,
-              new Pose2d(0, 0, new Rotation2d(0)), 
-              List.of(
-                new Translation2d(1.0, 0.5),
-                new Translation2d(2.0, -0.5)
-              ), 
-              new Pose2d(3.0, 0, new Rotation2d(0)), 
-              log
-            )
-          ),
-          driveTrain, log));
+    // SmartDashboard.putData("Drive Trajectory S-Fwd Relative", new DriveTrajectory(
+    //       CoordType.kRelative, StopType.kBrake,
+    //       new TrajectoryFacing(rotationFront, rotationFront,
+    //         TrajectoryCache.calcTrajectory( "S-Fwd", 0.4, 0.4,
+    //           new Pose2d(0, 0, new Rotation2d(0)), 
+    //           List.of(
+    //             new Translation2d(1.0, 0.5),
+    //             new Translation2d(2.0, -0.5)
+    //           ), 
+    //           new Pose2d(3.0, 0, new Rotation2d(0)), 
+    //           log
+    //         )
+    //       ),
+    //       driveTrain, log));
 
     // Testing for balancing
     // SmartDashboard.putData("Drive Smart Balance", new SequentialCommandGroup(new ResetPose,new SmartBalance(0.5, 0, driveTrain)));

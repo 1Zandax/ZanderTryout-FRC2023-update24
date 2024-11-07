@@ -12,7 +12,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
-
+import edu.wpi.first.math.util.Units;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.SwerveConstants;
 
@@ -23,7 +23,7 @@ import frc.robot.Constants.SwerveConstants;
 public class TrajectoryCache {
     private FileLog log;
    
-    private static int trajectoryCount = 2;
+    private static int trajectoryCount = 1;
     public TrajectoryFacing[] cache = new TrajectoryFacing[trajectoryCount];        // array of trajectories
 
     public enum TrajectoryType {
@@ -146,10 +146,11 @@ public class TrajectoryCache {
         cache[TrajectoryType.roboRace.value] = new TrajectoryFacing(
             new Rotation2d(0),
             new Rotation2d(Math.PI),
+
             calcTrajectory("Robo Race", 0.4, 0.4,
                 new Pose2d(45/39.37, 90/39.37, new Rotation2d(0)),
                 List.of(
-                    new Translation2d(150/39.37, 100/39.37),
+                    new Translation2d(Units.inchesToMeters(150), 100/39.37),
                     new Translation2d(165/39.37, 60/39.37),
                     new Translation2d(150/39.37, 45/39.37),
                     new Translation2d(135/39.37, 60/39.37),
@@ -162,8 +163,6 @@ public class TrajectoryCache {
                     new Translation2d(300/39.37, 60/39.37),
                     new Translation2d(300/39.37, 90/39.37),
                     new Translation2d(30/39.37, 90/39.37)
-
-
                 ),
                 new Pose2d(30/39.37, 90/39.37, new Rotation2d(Math.PI))
             )
