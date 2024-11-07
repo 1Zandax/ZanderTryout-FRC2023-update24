@@ -1,0 +1,22 @@
+----------------------------
+2024-11-06 20:48:04.046,FileLog,Open,sim\logfilesim.J1.2024-11-06.20-48-04.csv
+2024-11-06 20:48:04.061,Alliance Selection,SetAlliance,Alliance Chooser,Auto,Alliance,Blue
+2024-11-06 20:48:04.061,Alliance Selection,Initialize,DriverStation not present - default to Blue,Blue
+2024-11-06 20:48:04.212,Wrist,calibrateThroughBoreEncoder,encoderZero,-0.0,raw encoder,0.0,encoder degrees,0.0
+2024-11-06 20:48:05.036,SwerveModule FL,ZeroDriveEncoder,driveEncoderZero,0.0,raw encoder,0.0,encoder meters,0.0
+2024-11-06 20:48:05.036,SwerveModule FL,calibrateCanCoder,cancoderZero,-0.0,raw encoder,-90.0,encoder degrees,-90.0
+2024-11-06 20:48:05.041,SwerveModule FL,calibrateTurningEncoder,turningEncoderZero,5.357142857142857,raw encoder,0.0,set degrees,-90.0,encoder degrees,-90.0
+2024-11-06 20:48:05.455,SwerveModule FR,ZeroDriveEncoder,driveEncoderZero,0.0,raw encoder,0.0,encoder meters,0.0
+2024-11-06 20:48:05.455,SwerveModule FR,calibrateCanCoder,cancoderZero,-0.0,raw encoder,-90.0,encoder degrees,-90.0
+2024-11-06 20:48:05.455,SwerveModule FR,calibrateTurningEncoder,turningEncoderZero,5.357142857142857,raw encoder,0.0,set degrees,-90.0,encoder degrees,-90.0
+2024-11-06 20:48:05.885,SwerveModule BL,ZeroDriveEncoder,driveEncoderZero,0.0,raw encoder,0.0,encoder meters,0.0
+2024-11-06 20:48:05.887,SwerveModule BL,calibrateCanCoder,cancoderZero,-0.0,raw encoder,-90.0,encoder degrees,-90.0
+2024-11-06 20:48:05.887,SwerveModule BL,calibrateTurningEncoder,turningEncoderZero,5.357142857142857,raw encoder,0.0,set degrees,-90.0,encoder degrees,-90.0
+2024-11-06 20:48:06.305,SwerveModule BR,ZeroDriveEncoder,driveEncoderZero,0.0,raw encoder,0.0,encoder meters,0.0
+2024-11-06 20:48:06.305,SwerveModule BR,calibrateCanCoder,cancoderZero,-0.0,raw encoder,-90.0,encoder degrees,-90.0
+2024-11-06 20:48:06.305,SwerveModule BR,calibrateTurningEncoder,turningEncoderZero,5.357142857142857,raw encoder,0.0,set degrees,-90.0,encoder degrees,-90.0
+2024-11-06 20:48:06.435,Drive,Gyro Initialize,Firmware version,0.0
+2024-11-06 20:48:06.514,TrajectoryGeneration,Robo Race,maxSpeed,1.71,maxAcceleration,3.6
+2024-11-06 20:48:06.570,TrajectoryGeneration,Trajectory,Time,0.0,x,0.0,y,0.0,degrees,0.0,velocityMetersPerSec,0.0
+2024-11-06 20:48:06.570,TrajectoryGeneration,Robo Race,SUCCESS,true
+2024-11-06 20:48:06.689,Disabled,Robot disabled,
