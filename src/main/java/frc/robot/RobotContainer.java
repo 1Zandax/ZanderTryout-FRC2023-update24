@@ -135,6 +135,8 @@ public class RobotContainer {
         trajectoryCache.cache[TrajectoryType.testCurve.value], driveTrain, log));
     SmartDashboard.putData("Drive Trajectory Absolute", new DriveTrajectory(CoordType.kAbsolute, StopType.kBrake, 
         trajectoryCache.cache[TrajectoryType.test.value], driveTrain, log));  
+    SmartDashboard.putData("Robo Race", new DriveTrajectory(CoordType.kAbsolute, StopType.kBrake, 
+        trajectoryCache.cache[TrajectoryType.roboRace.value], driveTrain, log));  
     SmartDashboard.putData("Drive Trajectory S-Fwd Relative", new DriveTrajectory(
           CoordType.kRelative, StopType.kBrake,
           new TrajectoryFacing(rotationFront, rotationFront,

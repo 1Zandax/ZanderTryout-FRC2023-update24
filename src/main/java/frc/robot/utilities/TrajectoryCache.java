@@ -12,7 +12,6 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
-
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.SwerveConstants;
 
@@ -23,12 +22,13 @@ import frc.robot.Constants.SwerveConstants;
 public class TrajectoryCache {
     private FileLog log;
    
-    private static int trajectoryCount = 2;
+    private static int trajectoryCount = 3;
     public TrajectoryFacing[] cache = new TrajectoryFacing[trajectoryCount];        // array of trajectories
 
     public enum TrajectoryType {
         test(0),
-        testCurve(1);
+        testCurve(1),
+        roboRace(2);
         // CenterBalanceBlue(2),
         // CenterBalanceRed(3),
         // LeaveCommunity(4),
@@ -163,6 +163,54 @@ public class TrajectoryCache {
             )
         );     
         
+        // cache[TrajectoryType.roboRace.value] = new TrajectoryFacing(
+        //     new Rotation2d(0),
+        //     new Rotation2d(0),
+
+        //     calcTrajectory("Robo Race", 0.4, 0.4,
+        //         new Pose2d(45/39.37, 90/39.37, new Rotation2d(0)),
+        //         List.of(
+        //             //new Translation2d(Units.inchesToMeters(150), 100/39.37),
+        //             //new Translation2d(165/39.37, 60/39.37),
+        //             //new Translation2d(150/39.37, 45/39.37),
+        //             //new Translation2d(135/39.37, 60/39.37),
+        //             //new Translation2d(150/39.37, 90/39.37),
+        //             //new Translation2d(225/39.37, 110/39.37),
+        //             //new Translation2d(275/39.37, 120/39.37),
+        //             //new Translation2d(225/39.37, 125/39.37),
+        //             //new Translation2d(210/39.37, 120/39.37),
+        //             //new Translation2d(300/39.37, 45/39.37),
+        //             //new Translation2d(300/39.37, 60/39.37),
+        //             //new Translation2d(300/39.37, 90/39.37),
+        //             new Translation2d(30/39.37, 90/39.37)
+        //         ),
+        //         new Pose2d(30/39.37, 90/39.37, new Rotation2d(0))
+        //     )
+        // );
+
+        cache[TrajectoryType.roboRace.value] = new TrajectoryFacing(
+            new Rotation2d(0.0),            // Start facing +X direction
+            new Rotation2d(0.0),            // End facing +X direction
+            calcTrajectory("Robo Race Test", 0.4, 0.4, 
+                new Pose2d(45/39.37, 90/39.37, new Rotation2d(0.0)),
+                List.of(
+                    new Translation2d(150/39.37, 100/39.37),
+                    new Translation2d(165/39.37, 60/39.37),
+                    new Translation2d(150/39.37, 45/39.37),
+                    new Translation2d(135/39.37, 60/39.37),
+                    new Translation2d(150/39.37, 90/39.37),
+                    new Translation2d(225/39.37, 110/39.37),
+                    new Translation2d(275/39.37, 120/39.37),
+                    new Translation2d(225/39.37, 125/39.37),
+                    new Translation2d(210/39.37, 120/39.37),
+                    new Translation2d(300/39.37, 45/39.37),
+                    new Translation2d(300/39.37, 60/39.37),
+                    new Translation2d(300/39.37, 90/39.37)
+                ),
+                new Pose2d(30/39.37, 90/39.37, new Rotation2d(Math.toRadians(0.0)))
+            )
+        );   
+
         // cache[TrajectoryType.CenterBalanceBlue.value] = new TrajectoryFacing(
         //     new Rotation2d(Math.PI),            // Start facing driver station
         //     new Rotation2d(Math.PI),            // End facing driver station
