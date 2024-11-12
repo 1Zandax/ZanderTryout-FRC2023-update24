@@ -49,6 +49,7 @@
       "/SmartDashboard/Manipulator Pick Up": "Command",
       "/SmartDashboard/Manipulator Stop": "Command",
       "/SmartDashboard/Manipulator Toggle": "Command",
+      "/SmartDashboard/Robo Race": "Command",
       "/SmartDashboard/Test Balance": "Command",
       "/SmartDashboard/Wrist ElevMove Position": "Command",
       "/SmartDashboard/Wrist Scoring Position": "Command",

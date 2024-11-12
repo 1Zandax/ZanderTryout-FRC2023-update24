@@ -12,6 +12,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
+import edu.wpi.first.math.util.Units;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.SwerveConstants;
 
@@ -22,13 +23,13 @@ import frc.robot.Constants.SwerveConstants;
 public class TrajectoryCache {
     private FileLog log;
    
-    private static int trajectoryCount = 3;
+    private static int trajectoryCount = 1;
     public TrajectoryFacing[] cache = new TrajectoryFacing[trajectoryCount];        // array of trajectories
 
     public enum TrajectoryType {
-        test(0),
-        testCurve(1),
-        roboRace(2);
+        // test(0),
+        // testCurve(1),
+        roboRace(0);
         // CenterBalanceBlue(2),
         // CenterBalanceRed(3),
         // LeaveCommunity(4),
@@ -143,25 +144,25 @@ public class TrajectoryCache {
     public TrajectoryCache(FileLog log){
         this.log = log;
 
-        cache[TrajectoryType.test.value] = new TrajectoryFacing(
-            new Rotation2d(0.0),            // Start facing +X direction
-            new Rotation2d(0.0),            // End facing +X direction
-            calcTrajectory("Test", 0.4, 0.4, 
-                new Pose2d(0, 0, new Rotation2d(0.0)),
-                List.of(),
-                new Pose2d(3.0, 0, new Rotation2d(Math.toRadians(0.0)))
-            )
-        );
+        // cache[TrajectoryType.test.value] = new TrajectoryFacing(
+        //     new Rotation2d(0.0),            // Start facing +X direction
+        //     new Rotation2d(0.0),            // End facing +X direction
+        //     calcTrajectory("Test", 0.4, 0.4, 
+        //         new Pose2d(0, 0, new Rotation2d(0.0)),
+        //         List.of(),
+        //         new Pose2d(3.0, 0, new Rotation2d(Math.toRadians(0.0)))
+        //     )
+        // );
 
-        cache[TrajectoryType.testCurve.value] = new TrajectoryFacing(
-            new Rotation2d(0.0),            // Start facing +X direction
-            new Rotation2d(0.0),            // End facing +X direction
-            calcTrajectory("Test Curve", 0.4, 0.4, 
-                new Pose2d(0, 0, new Rotation2d(0.0)),
-                List.of(),
-                new Pose2d(3, 3, new Rotation2d(Math.toRadians(90.0)))
-            )
-        );     
+        // cache[TrajectoryType.testCurve.value] = new TrajectoryFacing(
+        //     new Rotation2d(0.0),            // Start facing +X direction
+        //     new Rotation2d(0.0),            // End facing +X direction
+        //     calcTrajectory("Test Curve", 0.4, 0.4, 
+        //         new Pose2d(0, 0, new Rotation2d(0.0)),
+        //         List.of(),
+        //         new Pose2d(3, 3, new Rotation2d(Math.toRadians(90.0)))
+        //     )
+        // );     
         
         // cache[TrajectoryType.roboRace.value] = new TrajectoryFacing(
         //     new Rotation2d(0),
@@ -189,25 +190,29 @@ public class TrajectoryCache {
         // );
 
         cache[TrajectoryType.roboRace.value] = new TrajectoryFacing(
-            new Rotation2d(0.0),            // Start facing +X direction
-            new Rotation2d(0.0),            // End facing +X direction
+            new Rotation2d(0.0),
+            new Rotation2d(0.0), // Be facing positively in both the beginning and end. This satisfies the requirement to be facing in the +X direction at the beginning.
             calcTrajectory("Robo Race Test", 0.4, 0.4, 
-                new Pose2d(45/39.37, 90/39.37, new Rotation2d(0.0)),
-                List.of(
-                    new Translation2d(150/39.37, 100/39.37),
-                    new Translation2d(165/39.37, 60/39.37),
-                    new Translation2d(150/39.37, 45/39.37),
-                    new Translation2d(135/39.37, 60/39.37),
-                    new Translation2d(150/39.37, 90/39.37),
-                    new Translation2d(225/39.37, 110/39.37),
-                    new Translation2d(275/39.37, 120/39.37),
-                    new Translation2d(225/39.37, 125/39.37),
-                    new Translation2d(210/39.37, 120/39.37),
-                    new Translation2d(300/39.37, 45/39.37),
-                    new Translation2d(300/39.37, 60/39.37),
-                    new Translation2d(300/39.37, 90/39.37)
+                new Pose2d(Units.inchesToMeters(45), Units.inchesToMeters(90), new Rotation2d(0.0)), // This is identified as the beginning: (45, 90). It is the starting point adjusted for the size of the robot.
+                List.of( // Methodology: point = barrelPos +/- (3 + sqrt(2)*34/2) (max clearance) or barrelPos +/- 3 + (sqrt(2)*34) (for greater distance) in one direction rounded to multiples of 15. This is for the circling; there are also intermediate points based on the chart.
+                    new Translation2d(Units.inchesToMeters(150), Units.inchesToMeters(105)), // Example calculation: 60 + 3 + 1.41*34 ~= 105.
+                    new Translation2d(Units.inchesToMeters(180), Units.inchesToMeters(60)),
+                    new Translation2d(Units.inchesToMeters(150), Units.inchesToMeters(30)),
+                    new Translation2d(Units.inchesToMeters(90), Units.inchesToMeters(60)),
+                    new Translation2d(Units.inchesToMeters(150), Units.inchesToMeters(105)),
+                    new Translation2d(Units.inchesToMeters(240), Units.inchesToMeters(75)),
+                    new Translation2d(Units.inchesToMeters(270), Units.inchesToMeters(90)),
+                    new Translation2d(Units.inchesToMeters(270), Units.inchesToMeters(120)),
+                    new Translation2d(Units.inchesToMeters(240), Units.inchesToMeters(150)),
+                    new Translation2d(Units.inchesToMeters(210), Units.inchesToMeters(120)),
+                    new Translation2d(Units.inchesToMeters(240), Units.inchesToMeters(75)),
+                    new Translation2d(Units.inchesToMeters(300), Units.inchesToMeters(30)),
+                    new Translation2d(Units.inchesToMeters(330), Units.inchesToMeters(60)),
+                    new Translation2d(Units.inchesToMeters(300), Units.inchesToMeters(90)),
+                    new Translation2d(Units.inchesToMeters(240), Units.inchesToMeters(75)),
+                    new Translation2d(Units.inchesToMeters(150), Units.inchesToMeters(90))
                 ),
-                new Pose2d(30/39.37, 90/39.37, new Rotation2d(Math.toRadians(0.0)))
+                new Pose2d(Units.inchesToMeters(30), Units.inchesToMeters(90), new Rotation2d(Math.toRadians(0.0))) //The goal is being fully inside the finish zone, so the end is further to the left (30, 90)
             )
         );   
 
